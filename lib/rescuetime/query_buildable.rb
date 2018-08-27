@@ -96,6 +96,31 @@ module Rescuetime
       add_to_query restrict_kind: 'activity'
     end
 
+    # Returns a Rescuetime documents report, grouping documents by their
+    # specific application, website, or activity
+    #
+    # Defaults:
+    # - order: rank
+    # - date range: current day
+    #
+    # @example Basic Use
+    #   client = Rescuetime::Client.new
+    #   client.documents
+    #   #=> #<Rescuetime::Collection:0x007f93841681a8>
+    #
+    # @return [Rescuetime::Collection] a Rescuetime Collection specifying kind
+    #                                  as a documents report
+    #
+    # @see #overview     Overview report (alternative)
+    # @see #categories   Category report (alternative)
+    # @see #productivity Productivity report (alternative)
+    # @see #efficiency   Efficiency report (alternative)
+    # @see https://www.rescuetime.com/apidoc#paramlist  Rescuetime API docs
+    #                                                   (see: restrict_kind)
+    def documents
+      add_to_query restrict_kind: 'document'
+    end
+
     # Returns a Rescuetime productivity report, featuring productivity
     # calculations
     #
